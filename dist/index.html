@@ -22,9 +22,9 @@
    <meta property="og:type" content="website">
    <meta property="og:image" content="img/fav/seo-image.jpg" />
    <!-- Styles -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251007143512" />
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css?_v=20251007143512">
-   <link rel="stylesheet" href="css/style.min.css?_v=20251007143512">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251008103601" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css?_v=20251008103601">
+   <link rel="stylesheet" href="css/style.min.css?_v=20251008103601">
    <title>Главная</title>
 </head>
 
@@ -100,7 +100,7 @@
                      </div>
                   </div>
                   <div class="hero__agitation-button">
-                     <a href="#request" class="btn">
+                     <a href="#" class="btn open-popup" data-popup="request-popup">
                         Рассчитать выгоду
                         <span class="btn__icon">
                            <svg>
@@ -1036,7 +1036,7 @@
                                  </div>
                               </div>
                               <div class="portfolio__button">
-                                 <a href="#request" class="btn">
+                                 <a href="#" class="btn open-popup" data-popup="request-popup">
                                     Заказать
                                     <div class="btn__icon">
                                        <svg>
@@ -1151,7 +1151,7 @@
                                  </div>
                               </div>
                               <div class="portfolio__button">
-                                 <a href="#request" class="btn">
+                                 <a href="#" class="btn open-popup" data-popup="request-popup">
                                     Заказать
                                     <div class="btn__icon">
                                        <svg>
@@ -1305,7 +1305,7 @@
                         </div>
                         <a data-fancybox="certificates-gallery" href="img/certificates/1-full.png"
                            class="certificates__slide-image">
-                           <picture><source srcset="img/certificates/1.webp" type="image/webp"><img src="img/certificates/1.png" width="75" height="107" alt="Сертификат"></picture>
+                           <picture><source srcset="img/certificates/1-full.webp" type="image/webp"><img src="img/certificates/1-full.png" width="75" height="107" alt="Сертификат"></picture>
                         </a>
                      </div>
                      <div class="certificates__slide swiper-slide">
@@ -1320,7 +1320,7 @@
                         </div>
                         <a data-fancybox="certificates-gallery" href="img/certificates/1-full.png"
                            class="certificates__slide-image">
-                           <picture><source srcset="img/certificates/1.webp" type="image/webp"><img src="img/certificates/1.png" width="75" height="107" alt="Сертификат"></picture>
+                           <picture><source srcset="img/certificates/1-full.webp" type="image/webp"><img src="img/certificates/1-full.png" width="75" height="107" alt="Сертификат"></picture>
                         </a>
                      </div>
                      <div class="certificates__slide swiper-slide">
@@ -1335,7 +1335,7 @@
                         </div>
                         <a data-fancybox="certificates-gallery" href="img/certificates/1-full.png"
                            class="certificates__slide-image">
-                           <picture><source srcset="img/certificates/1.webp" type="image/webp"><img src="img/certificates/1.png" width="75" height="107" alt="Сертификат"></picture>
+                           <picture><source srcset="img/certificates/1-full.webp" type="image/webp"><img src="img/certificates/1-full.png" width="75" height="107" alt="Сертификат"></picture>
                         </a>
                      </div>
                      <div class="certificates__slide swiper-slide">
@@ -1350,7 +1350,7 @@
                         </div>
                         <a data-fancybox="certificates-gallery" href="img/certificates/1-full.png"
                            class="certificates__slide-image">
-                           <picture><source srcset="img/certificates/1.webp" type="image/webp"><img src="img/certificates/1.png" width="75" height="107" alt="Сертификат"></picture>
+                           <picture><source srcset="img/certificates/1-full.webp" type="image/webp"><img src="img/certificates/1-full.png" width="75" height="107" alt="Сертификат"></picture>
                         </a>
                      </div>
                      <div class="certificates__slide swiper-slide">
@@ -1365,7 +1365,7 @@
                         </div>
                         <a data-fancybox="certificates-gallery" href="img/certificates/1-full.png"
                            class="certificates__slide-image">
-                           <picture><source srcset="img/certificates/1.webp" type="image/webp"><img src="img/certificates/1.png" width="75" height="107" alt="Сертификат"></picture>
+                           <picture><source srcset="img/certificates/1-full.webp" type="image/webp"><img src="img/certificates/1-full.png" width="75" height="107" alt="Сертификат"></picture>
                         </a>
                      </div>
                      <div class="certificates__slide swiper-slide">
@@ -1380,13 +1380,17 @@
                         </div>
                         <a data-fancybox="certificates-gallery" href="img/certificates/1-full.png"
                            class="certificates__slide-image">
-                           <picture><source srcset="img/certificates/1.webp" type="image/webp"><img src="img/certificates/1.png" width="75" height="107" alt="Сертификат"></picture>
+                           <picture><source srcset="img/certificates/1-full.webp" type="image/webp"><img src="img/certificates/1-full.png" width="75" height="107" alt="Сертификат"></picture>
                         </a>
                      </div>
                   </div>
                </div>
             </div>
          </section>
+
+         <div class="scroll-top">
+            <img src="img/theme-icons/skip-up.svg" width="18" height="18" alt="arrow">
+         </div>
       </main>
       <footer class="footer" id="contacts">
    <div class="footer__body container">
@@ -1469,10 +1473,68 @@
    </div>
 </footer>
    </div>
-   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20251007143512"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js?_v=20251007143512"></script>
-   <script src="js/app.js?_v=20251007143512"></script>
-   <!--Открывается классом show-->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20251008103601"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js?_v=20251008103601"></script>
+   <script src="js/app.js?_v=20251008103601"></script>
+   <!--Popups. Открываются классом show-->
+
+<!-- Request popup-->
+<div class="request-popup popup" id="request-popup">
+   <div class="request-popup__body popup__body">
+      <div class="popup__head">
+         <div class="popup__title">Получите персональное предложение за 5 минут</div>
+         <div class="request-popup__close popup__close">
+            <svg>
+               <use xlink:href="#icon-close"></use>
+            </svg>
+         </div>
+      </div>
+      <div class="request__card">
+         <div class="request__manager">
+            <div class="request__manager-photo">
+               <picture><source srcset="img/manager.webp" type="image/webp"><img src="img/manager.png" width="100" height="100" alt="photo"></picture>
+            </div>
+            <div class="request__manager-info">
+               <div class="request__manager-name">Смирнова <br>Екатерина Александровна</div>
+               <div class="request__manager-role">Менеджер по поставкам</div>
+            </div>
+         </div>
+         <form class="request__form">
+            <div class="request__form-area">
+               <div class="request__form-icon">
+                  <svg>
+                     <use xlink:href="#icon-user"></use>
+                  </svg>
+               </div>
+               <input type="text" autocomplete="name" placeholder="Ваше имя" required>
+            </div>
+            <div class="request__form-area">
+               <div class="request__form-icon">
+                  <svg>
+                     <use xlink:href="#icon-tel"></use>
+                  </svg>
+               </div>
+               <input type="text" class="tel-mask" autocomplete="tel" placeholder="Номер телефона" required>
+            </div>
+            <button type="submit" class="btn">
+               Получить скидку
+               <div class="btn__icon">
+                  <svg>
+                     <use xlink:href="#icon-plus"></use>
+                  </svg>
+               </div>
+            </button>
+            <div class="request__att">
+               Нажимая кнопку «Получить скидку», Вы даете согласие на обработку Ваших персональных данных, а
+               также соглашаетесь с условиями <a href="privacy-policy.html" target="_blank">Политики
+                  конфиденциальности</a>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+
+<!-- Thanks popup-->
 <div class="thanks-popup popup">
    <div class="thanks-popup__body popup__body">
       <div class="thanks-popup__title">Спасибо!</div>

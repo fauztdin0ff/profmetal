@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
          },
          speed: 500,
          autoplay: {
-            delay: 3000,
+            delay: 2500,
             disableOnInteraction: false,
          },
          on: {
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
          if (activeCircle) {
             void activeCircle.offsetWidth;
-            activeCircle.style.animation = "fill 3.5s linear forwards";
+            activeCircle.style.animation = "fill 3s linear forwards";
          }
       }
    }
@@ -279,7 +279,7 @@ if (infocardSlider) {
          crossFade: false,
       },
       autoplay: {
-         delay: 3000,
+         delay: 2500,
          disableOnInteraction: false,
       },
    });
@@ -702,7 +702,11 @@ document.addEventListener("DOMContentLoaded", function () {
       openButtons.forEach(button => {
          if (!button) return;
 
-         button.addEventListener('click', function () {
+         button.addEventListener('click', function (e) {
+            if (this.tagName.toLowerCase() === 'a') {
+               e.preventDefault();
+            }
+
             const popupId = this.dataset.popup;
             if (!popupId) return;
 
@@ -717,7 +721,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
    document.addEventListener('click', function (e) {
       const openPopup = document.querySelector('.popup.show');
-
       if (!openPopup) return;
 
       const isCloseBtn = e.target.closest('.popup__close');
@@ -730,6 +733,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
    });
 });
+
 
 
 /*---------------------------------------------------------------------------
@@ -749,6 +753,25 @@ document.addEventListener("DOMContentLoaded", () => {
    });
 });
 
+/*---------------------------------------------------------------------------
+Scroll top
+---------------------------------------------------------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+   const scrollBtn = document.querySelector('.scroll-top');
+   if (!scrollBtn) return;
+
+   scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+   });
+
+   window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+         scrollBtn.classList.add('show');
+      } else {
+         scrollBtn.classList.remove('show');
+      }
+   });
+});
 })();
 
 /******/ })()
