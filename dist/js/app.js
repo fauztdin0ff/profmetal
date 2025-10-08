@@ -445,6 +445,7 @@ Show categories
 ---------------------------------------------------------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
    const catalogWrapper = document.querySelector(".catalog__wrapper");
+   const catalogSection = document.querySelector(".catalog__categories");
    const btnOpen = document.querySelector(".catalog__more-open");
    const btnClose = document.querySelector(".catalog__more-close");
 
@@ -452,16 +453,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
    btnClose.style.display = "none";
 
-   btnOpen.addEventListener("click", () => {
+   const openCatalog = () => {
       catalogWrapper.classList.add("active");
       btnOpen.style.display = "none";
       btnClose.style.display = "inline-flex";
-   });
+   };
 
-   btnClose.addEventListener("click", () => {
+   const closeCatalog = () => {
       catalogWrapper.classList.remove("active");
       btnClose.style.display = "none";
       btnOpen.style.display = "inline-flex";
+
+      // Скроллим к низу блока
+      const bottomPosition = catalogSection.getBoundingClientRect().bottom + window.pageYOffset - window.innerHeight + 40;
+
+      window.scrollTo({
+         top: bottomPosition,
+         behavior: "smooth"
+      });
+   };
+
+
+   btnOpen.addEventListener("click", openCatalog);
+   btnClose.addEventListener("click", closeCatalog);
+
+   const highlightCategory = (element) => {
+      if (!element) return;
+      element.classList.add("highlight");
+      setTimeout(() => {
+         element.classList.remove("highlight");
+      }, 1500);
+   };
+
+   const hash = window.location.hash;
+   if (hash && document.querySelector(hash)) {
+      openCatalog();
+      setTimeout(() => {
+         const target = document.querySelector(hash);
+         if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            highlightCategory(target);
+         }
+      }, 300);
+   }
+
+   document.querySelectorAll('a[href^="#category-"]').forEach(link => {
+      link.addEventListener("click", (e) => {
+         const targetId = link.getAttribute("href");
+         const target = document.querySelector(targetId);
+         if (!target) return;
+
+         if (!catalogWrapper.classList.contains("active")) {
+            openCatalog();
+            setTimeout(() => {
+               target.scrollIntoView({ behavior: "smooth", block: "start" });
+               highlightCategory(target);
+            }, 300);
+         } else {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            highlightCategory(target);
+         }
+      });
    });
 });
 
@@ -569,41 +621,46 @@ if (partnersSlider) {
 /*---------------------------------------------------------------------------
 Map
 ---------------------------------------------------------------------------*/
-/* document.addEventListener("DOMContentLoaded", () => {
-   const tooltip = document.getElementById("tooltip");
-   const object = document.getElementById("russiaMap");
+document.addEventListener("DOMContentLoaded", () => {
+   const mapObject = document.getElementById("russiaMap");
+   if (!mapObject) return;
 
-   object.addEventListener("load", () => {
-      const svg = object.contentDocument.querySelector("svg");
+   mapObject.addEventListener("load", () => {
+      const svgDoc = mapObject.contentDocument;
+      if (!svgDoc) return;
 
-      // пример: добавляем подсказки по ID
-      const cities = {
-         "city-moscow": "Москва",
-         "city-kazan": "Казань",
-         "city-samara": "Самара"
-      };
+      const redCircles = Array.from(svgDoc.querySelectorAll(".red-circle"));
+      if (!redCircles.length) return;
 
-      Object.entries(cities).forEach(([id, name]) => {
-         const el = svg.getElementById(id);
-         if (!el) return;
+      // максимальное количество одновременных вспышек
+      const MAX_ACTIVE = 15;
 
-         el.addEventListener("mouseenter", e => {
-            tooltip.textContent = name;
-            tooltip.style.opacity = 1;
+      function flashRandomCircles() {
+         // выбираем случайное количество активных (например, 10–15)
+         const count = Math.floor(10 + Math.random() * 6);
+
+         // выбираем случайные path
+         const randomCircles = redCircles
+            .sort(() => 0.5 - Math.random())
+            .slice(0, count);
+
+         // запускаем анимацию для выбранных
+         randomCircles.forEach(el => {
+            if (el.classList.contains("flash")) return; // не дублируем
+            el.classList.add("flash");
+            setTimeout(() => el.classList.remove("flash"), 5000);
          });
 
-         el.addEventListener("mousemove", e => {
-            tooltip.style.left = e.pageX + 10 + "px";
-            tooltip.style.top = e.pageY + 10 + "px";
-         });
+         // запускаем следующую волну через случайный интервал
+         const delay = 400 + Math.random() * 800;
+         setTimeout(flashRandomCircles, delay);
+      }
 
-         el.addEventListener("mouseleave", () => {
-            tooltip.style.opacity = 0;
-         });
-      });
+      flashRandomCircles();
    });
 });
- */
+
+
 
 
 /*---------------------------------------------------------------------------
